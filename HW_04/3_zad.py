@@ -1,4 +1,4 @@
-def Average(list):
+def average(list):
     return sum(list) / len(list)
     return sum(multiplied_list) / len(multiplied_list)
 
@@ -11,7 +11,7 @@ for i in range(num):
     list.append(float(input()))
 print(list)
 
-average = Average(list)
+average = average(list)
 print("Average of the list =", round(average, 2))
 
 copy_list = list
@@ -22,5 +22,5 @@ for elements in copy_list:
     multiplied_list.append(rounded_elements * 2)
 print(multiplied_list)
 
-multiplied_average = Average(multiplied_list)
+multiplied_average = average(multiplied_list)
 print("Average of the converted list =", round(multiplied_average, 2))
