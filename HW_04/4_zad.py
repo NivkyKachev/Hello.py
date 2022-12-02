@@ -1,4 +1,4 @@
-def Num_list(num):
+def num_list(num):
     list1 = []
     for e in range(num):
         element = input("Enter a value for the list: ")
@@ -7,16 +7,16 @@ def Num_list(num):
     return list1
 
 
-def Sum_list(list):
-    Sum = 0
+def sum_list(list):
+    sum = 0
     for k in list:
         if type(k) == float or type(k) == int or k.isnumeric():
             elem = float(k)
-            Sum += elem
-    return Sum
+            sum += elem
+    return sum
 
 
-def Max_of_two(a, b):
+def max_of_two(a, b):
     if type(a) == int or type(a) == float:
         if type(b) == int or type(b) == float:
             if a >= b:
@@ -30,5 +30,5 @@ def Max_of_two(a, b):
         return
 
 
-print(Max_of_two(Sum_list(Num_list(4)), Sum_list(Num_list(3))))
-print(Max_of_two(Sum_list([4, "AA@", 3.12, "1"]), "9.2"))
+print(max_of_two(sum_list(num_list(4)), sum_list(num_list(3))))
+print(max_of_two(sum_list([4, "AA@", 3.12, "1"]), "9.2"))
