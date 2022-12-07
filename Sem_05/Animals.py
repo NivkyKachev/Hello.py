@@ -30,11 +30,11 @@ class JungleAnimal:
         elif type(sound) != str:
             raise InvalidSoundError()
         elif 'name' not in name:
-            raise MissingParameterError('name')
+            raise MissingParameterError(":'(")
         elif 'age' not in age:
-            raise MissingParameterError('age')
+            raise MissingParameterError()
         elif 'sound' not in sound:
-            raise MissingParameterError('sound')
+            raise MissingParameterError()
         self.name = name
         self.age = age
         self.sound = sound
@@ -60,6 +60,24 @@ class Jaguar(JungleAnimal):
     def print(self):
         print(f"Jaguar(+ {self.name}, {self.age}, {self.sound} +)")
 
+    def daily_task(self, animals):
+        for i in range(len(animals)):
+            if type(animals[i]) == Lemur or type(animals[i]) == Human:
+                del animals[i]
+                print(f"The Jaguar hunted down {self.name} the {self.__name__}")
+
+
+class Lemur(JungleAnimal):
+    def __init__(self, name, age, sound):
+        super().__init__(name, age, sound)
+        if age > 10:
+            raise InvalidAgeError()
+        elif "e" not in sound:
+            raise InvalidSoundError()
+
+    def print(self):
+        print(f"Lemur(+ {self.name}, {self.age}, {self.sound} +)")
+
     def daily_task(self, fruits):
         if fruits >= 10:
             print(f"{self.name} the Lemur ate a full meal of 10 fruits")
@@ -73,15 +91,6 @@ class Jaguar(JungleAnimal):
             self.make_sound()
             self.make_sound()
             return 0
-
-
-class Lemur(JungleAnimal):
-    def __init__(self, name, age, sound):
-        super().__init__(name, age, sound)
-        if age > 10:
-            raise InvalidAgeError()
-        elif "e" not in sound:
-            raise InvalidSoundError()
 
 
 class Human(JungleAnimal):
@@ -132,7 +141,8 @@ names = [
     "Monica",
     "Lorelei",
     "Sandra",
-    "Michelle"]
+    "Michelle"
+]
 
 sounds = [
     "RAAWR",
@@ -143,13 +153,14 @@ sounds = [
     "Eeek",
     "Aaaaa",
     "Speak",
-    "I am a Human"]
+    "I am a Human"
+]
 
 for i in range(102):
     random_number = random.randint(0, 9)
-    random_name = names[random.randint(0, 18)]
+    random_name = names[random.randint(0, len(names) - 1)]
     random_age = random.randint(7, 20)
-    random_sound = sounds[random.randint(0, 9)]
+    random_sound = sounds[random.randint(0, len(sounds) - 1)]
 
     try:
         if 0 <= random_number <= 3:
@@ -158,8 +169,8 @@ for i in range(102):
             animals.append(Jaguar(random_name, random_age, random_sound))
         elif 8 <= random_number <= 9:
             animals.append(Human(random_name, random_age, random_sound))
-    except:
-        print("Invalid value!")
+    except Exception as e:
+        print(random_number, random_name, random_age, random_sound, str(e))
 
 print(f"The jungle now has {len(animals)} animals")
 
